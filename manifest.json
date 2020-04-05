@@ -1,0 +1,31 @@
+{
+    "name": "WholeFoodsMarket Chrome Plugin",
+    "version": "1.0",
+    "description": "plugin which refreshes checkout page and notify about new slots",
+    "manifest_version": 2,
+    "permissions": [
+        "activeTab",
+        "declarativeContent",
+        "storage"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.amazon.com/gp/buy/shipoptionselect/handlers/display.html*"
+            ],
+            "run_at": "document_end",
+            "js": [
+                "contentScript.js"
+            ]
+        }
+    ],
+    "page_action": {
+        "default_popup": "popup.html"
+    }
+}
