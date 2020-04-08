@@ -6,14 +6,18 @@
     "permissions": [
         "activeTab",
         "declarativeContent",
-        "storage"
+        "storage",
+        "notifications"
     ],
     "background": {
-        "scripts": [
-            "background.js"
-        ],
+        "page": "background/background.html",
         "persistent": false
     },
+    "web_accessible_resources": [
+        "assets/*",
+        "utils/*",
+        "content/*"
+    ],
     "content_scripts": [
         {
             "matches": [
@@ -21,11 +25,11 @@
             ],
             "run_at": "document_end",
             "js": [
-                "contentScript.js"
+                "content/contentLoader.js"
             ]
         }
     ],
     "page_action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup/popup.html"
     }
 }
